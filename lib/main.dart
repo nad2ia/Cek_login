@@ -1,50 +1,44 @@
 import 'package:flutter/material.dart';
+import 'secondpage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(myApp());
 }
 
-class MyApp extends StatelessWidget {
+class myApp extends StatelessWidget {
+  //const myApp({ key? key }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Latihan Flutter - Nadia Ramadhani")),
-        body: Container(
-            color: Colors.black26,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Container(
-                  height: 200,
-                  color: Colors.yellow,
-                ),
-                Container(
-                  color: Colors.white,
-                  width: double.infinity,
-                  child: Text(
-                    "Belajar Flutter Nadia Ramadhani - STTB",
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                IntrinsicHeight(
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Expanded(
-                            child: Container(
-                          color: Colors.orange,
-                          height: 150,
-                        )),
-                        Expanded(
-                            child: Container(
-                          color: Colors.green,
-                        ))
-                      ]),
-                ),
-              ],
-            )),
+    final String name = "Nadia Ramadhani";
+    TextEditingController textfortosend = TextEditingController();
+    return Material(
+      initialRouter: '/secondpage',
+      routes: {
+        '/secondpage' :(context) => SecondPage(textfromController: name, textfromTextField: textfortosend.text),
+      },
+
+      home:Scaffold(
+        appBar: AppBar(title: Text("Navigation Router"),),
+        body: Builder(builder: (context)=> Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextField(
+                controller: textfortosend,
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(border: InputBorder.none, hintText: "Isi Disini"),
+              ),
+              MaterialButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondPage()));
+              },
+              color: Colors.blue,
+              child: Text("Pergi ke Halaman 2", style: TextStyle(color: Colors.white))),
+           
+            ],
+          ),
+        )),
       ),
     );
   }
 }
+
