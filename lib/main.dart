@@ -10,7 +10,6 @@ class myApp extends StatelessWidget {
       title: 'Login',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         primaryColor: Colors.black
       ),
       home: Login(),
