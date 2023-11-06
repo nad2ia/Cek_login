@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart'; 
 import 'CekLogin.dart';
 
-class extend StatefulWidget {
+class extends StatelessWidget {
   @override
   CekLogin createStates() => CekLogin();
 }
